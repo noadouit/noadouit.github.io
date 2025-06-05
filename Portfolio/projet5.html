@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet : Dashboard Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a202c; /* bg-gray-900 */
+            color: #e2e8f0; /* text-gray-200 */
+        }
+        .container {
+            max-width: 1024px; /* mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+    <header class="bg-gray-800 py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-xl font-bold text-purple-400">Mon Portfolio</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+            <a href="index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
+            </a>
+
+            <h2 class="text-4xl font-bold mb-4 text-purple-400">Dashboard Analytics Interactif</h2>
+            <p class="text-gray-400 text-lg mb-6">
+                Ce projet a consisté en la création d'un tableau de bord interactif pour visualiser et analyser des données complexes, offrant une vue d'ensemble claire et des insights actionnables.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Technologies Utilisées</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>JavaScript (React, Vue.js, Angular)</li>
+                        <li>Librairies de visualisation de données (D3.js, Chart.js, Recharts)</li>
+                        <li>Python (Pandas, NumPy pour le traitement des données)</li>
+                        <li>API de données (ex: Google Analytics, Salesforce)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Fonctionnalités Clés</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Visualisations de données dynamiques (graphiques, cartes, tables)</li>
+                        <li>Filtres et contrôles interactifs pour l'exploration des données</li>
+                        <li>Mises à jour des données en temps réel (ou quasi-temps réel)</li>
+                        <li>Exportation des rapports (PDF, CSV)</li>
+                        <li>Gestion des accès utilisateurs et des tableaux de bord personnalisables.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis et Solutions</h3>
+            <p class="mb-4">
+                Le principal défi a été l'intégration de sources de données variées et la transformation de ces données brutes en informations exploitables via des visualisations pertinentes. J'ai utilisé des techniques de nettoyage et de pré-traitement des données pour assurer leur qualité et leur cohérence.
+            </p>
+            <p class="mb-4">
+                L'optimisation des performances pour le chargement rapide de grands ensembles de données et la fluidité des interactions a également été un point clé du développement.
+            </p>
+
+            <div class="mt-8 text-center">
+                <img src="https://via.placeholder.com/800x450?text=Aper%C3%A7u+Dashboard+Analytics" alt="Aperçu du projet Dashboard Analytics" class="rounded-lg shadow-xl mb-4 mx-auto">
+                <a href="#" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block mr-4">
+                    Voir la démo live
+                </a>
+                <a href="#" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block">
+                    Code Source (GitHub)
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Mon Portfolio. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
