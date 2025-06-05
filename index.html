@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for things that can't be done with Tailwind */
+        .dark-overlay {
+            position: relative;
+        }
+        .dark-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #profile-image {
+            transition: transform 0.3s;
+        }
+        #profile-image:hover {
+            transform: scale(1.05);
+        }
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        .nav-link.active {
+            color: #a78bfa; /* purple-400 */
+            border-bottom: 2px solid #a78bfa;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans min-h-screen">
+    <header class="bg-gray-800 py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold text-purple-400">Mon Portfolio</h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300 active" data-tab="home">Accueil</a></li>
+                    <li><a href="#about" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="about">À Propos</a></li>
+                    <li><a href="#skills" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="skills">Compétences</a></li>
+                    <li><a href="#experience" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="experience">Parcours</a></li>
+                    <li><a href="#projects" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="projects">Projets</a></li>
+                    <li><a href="#summary" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="summary">Bilan</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-gray-300 hover:text-purple-400 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <nav id="mobile-menu" class="md:hidden bg-gray-800 mt-2 hidden">
+            <ul class="flex flex-col space-y-2 px-4 py-2">
+                <li><a href="#home" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2 active" data-tab="home">Accueil</a></li>
+                <li><a href="#about" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="about">À Propos</a></li>
+                <li><a href="#skills" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="skills">Compétences</a></li>
+                <li><a href="#experience" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="experience">Parcours</a></li>
+                <li><a href="#projects" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="projects">Projets</a></li>
+                <li><a href="#summary" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="summary">Bilan</a></li>
+                <li><a href="#contact" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="home" class="tab-content active bg-gray-800 rounded-lg shadow-lg p-8 mb-8 text-center dark-overlay">
+            <div class="content relative z-20">
+                <img id="profile-image" src="https://via.placeholder.com/150" alt="Profile Picture" class="w-36 h-36 rounded-full mx-auto mb-6 border-4 border-purple-500 shadow-xl">
+                <h2 class="text-5xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up">Bonjour, je suis <span class="text-purple-400">[Votre Nom]</span></h2>
+                <p class="text-2xl text-gray-300 mb-8 animate-fade-in-up delay-100">Développeur Full-Stack | Designer UI/UX | Passionné de Technologie</p>
+                <div class="flex justify-center space-x-6 animate-fade-in-up delay-200">
+                    <a href="#contact" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">Contactez-moi</a>
+                    <a href="path/to/your/cv.pdf" download class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">Télécharger CV</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">À Propos de Moi</h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                Je suis un développeur passionné avec X années d'expérience dans la création d'applications web et mobiles robustes et intuitives. Mon parcours m'a permis d'acquérir une expertise solide tant en développement front-end (HTML, CSS, JavaScript, React/Vue/Angular) qu'en back-end (Node.js, Python/Django, PHP/Laravel, bases de données SQL/NoSQL).
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                J'aime transformer des idées complexes en solutions logicielles élégantes et fonctionnelles. Je suis constamment à l'affût des nouvelles technologies et des meilleures pratiques pour offrir des produits de haute qualité.
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed">
+                En dehors du code, je suis également intéressé par [Vos centres d'intérêt personnels, ex: la photographie, les jeux vidéo, la musique, le sport], ce qui m'aide à maintenir un bon équilibre et une perspective créative.
+            </p>
+        </section>
+
+        <section id="skills" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Mes Compétences</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-desktop text-purple-400 mr-2"></i> Frontend</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                        <li>Frameworks CSS: Tailwind CSS, Bootstrap</li>
+                        <li>Bibliothèques/Frameworks JS: React.js, Vue.js, Angular</li>
+                        <li>Design Responsif, UI/UX</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-server text-purple-400 mr-2"></i> Backend</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Node.js (Express.js)</li>
+                        <li>Python (Django, Flask)</li>
+                        <li>PHP (Laravel, Symfony)</li>
+                        <li>API RESTful</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-database text-purple-400 mr-2"></i> Bases de données</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>SQL: MySQL, PostgreSQL, SQLite</li>
+                        <li>NoSQL: MongoDB, Firebase</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-tools text-purple-400 mr-2"></i> Outils & Autres</h3>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Git, GitHub/GitLab</li>
+                        <li>Docker, Kubernetes (bases)</li>
+                        <li>Méthodologies Agile (Scrum)</li>
+                        <li>Tests Unitaires & Intégration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Mon Parcours</h2>
+
+            <div class="mb-8 p-6 bg-gray-700 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold text-white mb-2">Développeur Full-Stack Senior</h3>
+                <p class="text-purple-300 mb-2">Nom de l'Entreprise A | Janvier 2022 - Présent</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Conception et développement d'applications web complexes utilisant [Technologies spécifiques].</li>
+                    <li>Optimisation des performances et de la scalabilité des systèmes existants.</li>
+                    <li>Collaboration avec les équipes de produit et de design pour définir les exigences et livrer des fonctionnalités innovantes.</li>
+                    <li>Mentorat de développeurs juniors et revue de code.</li>
+                </ul>
+            </div>
+
+            <div class="mb-8 p-6 bg-gray-700 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold text-white mb-2">Développeur Front-End</h3>
+                <p class="text-purple-300 mb-2">Nom de l'Entreprise B | Juin 2019 - Décembre 2021</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Développement d'interfaces utilisateur responsives et interactives avec [Technologies spécifiques].</li>
+                    <li>Amélioration de l'expérience utilisateur et de l'accessibilité des applications.</li>
+                    <li>Intégration d'APIs RESTful pour la consommation de données.</li>
+                </ul>
+            </div>
+
+            <div class="p-6 bg-gray-700 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold text-white mb-2">Diplôme d'Ingénieur en Informatique</h3>
+                <p class="text-purple-300 mb-2">Nom de l'Université/École | 2016 - 2019</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Spécialisation en développement logiciel et systèmes d'information.</li>
+                    <li>Projets de groupe et mémoires sur [Sujets pertinents].</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Mes Projets</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="projet1.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <img src="images/apercu_projet1.png" alt="Projet 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Site Web Portfolio</h3>
+                        <p class="text-gray-400">Développement d'un portfolio personnel avec HTML, CSS et JS.</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Développement WEB</span>
+                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Créativité</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projet2.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <img src="images/apercu_projet2.png" alt="Projet 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Création d'un reporting</h3>
+                        <p class="text-gray-400">Créer un reporting en VBA pour la gestion de notes d'un étudiant</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">VBA</span>
+                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Travail d'équipe</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projet3.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <img src="images/apercu_projet3.png" alt="Projet 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Implémentation et alimentation d'une base de données</h3>
+                        <p class="text-gray-400">Creer une base de données dans un contexte réel</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">BDR</span>
+                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Programmation</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projet4.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <img src="images/apercu_projet4.png" alt="Projet 4" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Indicateurs de performances</h3>
+                        <p class="text-gray-400">Créer un tableau de bord et des indicateurs de performances pour l'entreprise Fleury Michon</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Indicateurs</span>
+                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Analyse</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projet5.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <img src="images/aprcu_projet5.png" alt="Projet 5" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Analyse de données, reporting et datavisualisation</h3>
+                        <p class="text-gray-400">Création d'un tableau de bord interactif pour le pôle d'expertise de risques Calixys.</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Data Viz</span>
+                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Programmation</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="projet6.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                    <img src="https://via.placeholder.com/400x250?text=Projet+6" alt="Projet 6" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Jeu Vidéo 2D</h3>
+                        <p class="text-gray-400">Développement d'un petit jeu vidéo mobile avec Unity 2D.</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Game Dev</span>
+                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Unity</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="summary" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Bilan et Objectifs</h2>
+            <div class="text-gray-300 text-lg leading-relaxed mb-6">
+                <p class="mb-4">
+                    Ce portfolio représente un instantané de mes compétences et de mon parcours jusqu'à présent. Chaque projet a été une opportunité d'apprendre, de grandir et de relever de nouveaux défis. Je suis particulièrement fier de [mentionner un aspect ou un projet spécifique] car [expliquer pourquoi].
+                </p>
+                <p class="mb-4">
+                    Pour l'avenir, mes objectifs sont de [mentionner 2-3 objectifs concrets, ex: me spécialiser davantage en intelligence artificielle, contribuer à des projets open source d'envergure, maîtriser de nouvelles technologies comme Rust ou Go]. Je suis constamment à la recherche de nouvelles opportunités pour appliquer mes compétences et élargir mes connaissances.
+                </p>
+                <p>
+                    Je crois fermement que l'apprentissage continu est la clé dans le domaine de la technologie. Je suis impatient de voir quelles innovations le futur nous réserve et de pouvoir y contribuer.
+                </p>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-white mb-4 border-b-2 border-purple-500 pb-2">Mon Bilan Personnel (modifiable)</h3>
+            <textarea id="summary-content" class="w-full p-4 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4" rows="8" placeholder="Écrivez ici votre bilan personnel ou vos réflexions..."></textarea>
+            <button id="save-summary" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                Enregistrer le Bilan
+            </button>
+        </section>
+
+        <section id="contact" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Contactez-moi</h2>
+            <p class="text-lg text-gray-300 mb-6">
+                N'hésitez pas à me contacter pour toute question, opportunité de collaboration ou simplement pour discuter.
+            </p>
+
+            <form action="YOUR_FORM_SUBMISSION_URL" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Nom :</label>
+                    <input type="text" id="name" name="name" required class="w-full p-3 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email :</label>
+                    <input type="email" id="email" name="email" required class="w-full p-3 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message :</label>
+                    <textarea id="message" name="message" rows="6" required class="w-full p-3 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                </div>
+                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full md:w-auto">
+                    Envoyer le message
+                </button>
+            </form>
+
+            <div class="mt-8 text-center">
+                <h3 class="text-2xl font-semibold text-white mb-4">Retrouvez-moi sur :</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://linkedin.com/in/votrenom" target="_blank" class="text-gray-300 hover:text-purple-400 text-4xl transition duration-300"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/votrenom" target="_blank" class="text-gray-300 hover:text-purple-400 text-4xl transition duration-300"><i class="fab fa-github"></i></a>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching logic
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.dataset.tab;
+                showTab(tabId);
+            });
+        });
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.querySelectorAll(`.nav-link[data-tab=\"${tabId}\"]`).forEach(link => {
+                link.classList.add('active');
+            });
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Save summary functionality
+        document.getElementById('save-summary').addEventListener('click', function() {
+            const summaryContent = document.getElementById('summary-content').value;
+            // In a real app, you would save this to a database or localStorage
+            localStorage.setItem('personalSummary', summaryContent);
+            alert('Bilan enregistré avec succès !');
+        });
+        
+        // Load saved summary if exists
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedSummary = localStorage.getItem('personalSummary');
+            if (savedSummary) {
+                document.getElementById('summary-content').value = savedSummary;
+            }
+            // Ensure the initial tab is shown correctly on load
+            const initialHash = window.location.hash.substring(1) || 'home';
+            showTab(initialHash);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet : Site Web Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a202c; /* bg-gray-900 */
+            color: #e2e8f0; /* text-gray-200 */
+        }
+        .container {
+            max-width: 1024px; /* mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+    <header class="bg-gray-800 py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-xl font-bold text-purple-400">Mon Portfolio</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+            <a href="index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
+            </a>
+
+            <h2 class="text-4xl font-bold mb-4 text-purple-400">Site Web Portfolio</h2>
+            <p class="text-gray-400 text-lg mb-6">
+                Ce projet a consisté en la création de mon site web personnel responsive pour présenter mes compétences, mon parcours et mes réalisations professionnelles. L'objectif était de fournir une plateforme centralisée et visuellement attrayante pour mon portfolio en ligne.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Technologies Utilisées</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript (pour la navigation par onglets)</li>
+                        <li>Font Awesome (pour les icônes)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Fonctionnalités Clés</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Design entièrement responsive : compatible avec tous les types d’appareils (mobiles, tablettes, ordinateurs)</li>
+                        <li>Navigation fluide par onglets dynamiques : sections accessibles sans rechargement de page (Accueil, À Propos, Projets, Bilan, Contact).</li>
+                        <li>Formulaire de contact</li>
+                        <li>Sections dédiées : Compétences techniques et transversales, Parcours académique et professionnel, Centres d’intérêt et passions</li>
+                        <li>Animations CSS pour une meilleure expérience utilisateur.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis et Solutions</h3>
+            <p class="mb-4">
+                L’un des principaux défis a été de garantir une compatibilité optimale sur tous les appareils, en adaptant soigneusement la structure CSS pour assurer un affichage fluide quel que soit le support utilisé. J’ai également développé une logique JavaScript personnalisée pour permettre le changement d’onglets sans recharger la page, améliorant ainsi la fluidité et la réactivité de la navigation.
+            </p>
+            <p class="mb-4">
+                Enfin, l’utilisation d’icônes via Font Awesome a permis d’enrichir visuellement l’interface et de rendre le contenu plus clair et professionnel.
+            </p>
+
+            <div class="mt-8 text-center">
+                <a href="#" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block mr-4">
+                    Voir le projet en ligne
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

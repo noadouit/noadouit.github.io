@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet : Identité Visuelle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a202c; /* bg-gray-900 */
+            color: #e2e8f0; /* text-gray-200 */
+        }
+        .container {
+            max-width: 1024px; /* mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+    <header class="bg-gray-800 py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-xl font-bold text-purple-400">Mon Portfolio</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+            <a href="index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
+            </a>
+
+            <h2 class="text-4xl font-bold mb-4 text-purple-400">Implémentation et alimentation d'une base de données</h2>
+            <p class="text-gray-400 text-lg mb-6">
+                Ce projet a été mené dans le cadre de la SAÉ "Conception et implémentation d’une base de données" du BUT SD1. Il avait pour objectif de modéliser, développer et interroger une base de données relationnelle destinée à informatier la gestion des approvisionnements et des ventes d'une coopérative de sel marin située sur l’île de Ré. Le système devait permettre de suivre les apports de sel des sauniers, la transformation des produits, les ventes aux clients, ainsi que la gestion annuelle des prix.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Outils Utilisés</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Looping MCD : pour la conception du modèle conceptuel de données.</li>
+                        <li>MySQL / PhpMyAdmin (EasyPHP) : pour la création, la manipulation et l’administration de la base.</li>
+                        <li>SQL : pour la création des tables, l’insertion des données, et les requêtes d’analyse.</li>
+                        <li>Python (avec Tkinter) : pour automatiser les traitements (import de fichiers, interface utilisateur).</li>
+                        <li>Fichiers CSV & Excel : utilisés comme sources de données réelles.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Livrables et Objectifs</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Modélisation complète du système via un MCD puis génération du MLD et du script SQL.</li>
+                        <li>Création de la base de données selmarin, avec définition des clés primaires et étrangères, respect des contraintes d’intégrité et utilisation du moteur InnoDB.</li>
+                        <li>Alimentation de la base avec des requêtes SQL (INSERT) issues de fichiers exemples et d’un fichier Excel de données annuelles.</li>
+                        <li>Développement d’une interface graphique avec Tkinter</li>
+                        <li>Réalisation de 10 requêtes SQL avancées à visée décisionnelle (regroupements, filtrages, vues, manipulations de données).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis Rencontrés et Solutions Apportées</h3>
+            <p class="mb-4">
+                Le principal défi a été la rétro-conception du modèle à partir de données brutes (CSV et Excel), en s'assurant de couvrir tous les aspects fonctionnels (produits, prix, clients, sauniers, ventes). Des efforts particuliers ont été fournis pour respecter les contraintes relationnelles et optimiser la structure des tables.
+            </p>
+            <p class="mb-4">
+                L'import automatique des fichiers via Python a nécessité un travail sur la lecture, le nettoyage et l’adaptation des données au format SQL. De plus, l’interface Tkinter a été conçue pour rendre l’outil accessible aux utilisateurs non techniques, tout en permettant de piloter des fonctions complexes depuis une interface claire.
+            </p>
+
+            <div class="mt-8 text-center">
+                <a href="#" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block">
+                    Voir les maquettes
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

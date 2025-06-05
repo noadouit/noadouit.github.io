@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet : Jeu Vidéo 2D</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a202c; /* bg-gray-900 */
+            color: #e2e8f0; /* text-gray-200 */
+        }
+        .container {
+            max-width: 1024px; /* mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+    <header class="bg-gray-800 py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-xl font-bold text-purple-400">Mon Portfolio</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+            <a href="index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
+            </a>
+
+            <h2 class="text-4xl font-bold mb-4 text-purple-400">Jeu Vidéo Mobile 2D : [Nom du Jeu]</h2>
+            <p class="text-gray-400 text-lg mb-6">
+                Ce projet a consisté en le développement complet d'un jeu vidéo mobile 2D, incluant la conception du gameplay, la programmation, la création des assets graphiques et sonores, et l'optimisation pour les plateformes mobiles.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Technologies Utilisées</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Moteur de jeu (ex: Unity 2D, Godot, GameMaker)</li>
+                        <li>Langage de programmation (ex: C#, GDScript)</li>
+                        <li>Logiciels de création graphique (ex: Aseprite, Photoshop)</li>
+                        <li>Logiciels de création sonore (ex: Audacity)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Gameplay et Fonctionnalités</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Mécaniques de jeu spécifiques (ex: plateforme, puzzle, runner)</li>
+                        <li>Système de score et de progression</li>
+                        <li>Niveaux générés procéduralement ou conçus manuellement</li>
+                        <li>Interface utilisateur intuitive adaptée au mobile</li>
+                        <li>Musiques et effets sonores immersifs.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis et Solutions</h3>
+            <p class="mb-4">
+                Un défi majeur a été l'optimisation des performances pour garantir une expérience fluide sur une large gamme d'appareils mobiles. J'ai utilisé des techniques d'optimisation des assets et du code pour réduire la consommation de ressources. La conception d'un gameplay équilibré et engageant, offrant un bon niveau de difficulté progressive, a également été un point central.
+            </p>
+            <p class="mb-4">
+                La création de tous les assets graphiques et sonores en respectant une cohérence artistique a demandé une attention particulière aux détails.
+            </p>
+
+            <div class="mt-8 text-center">
+                <img src="https://via.placeholder.com/800x450?text=Aper%C3%A7u+Jeu+Vid%C3%A9o" alt="Aperçu du projet Jeu Vidéo" class="rounded-lg shadow-xl mb-4 mx-auto">
+                <a href="#" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block mr-4">
+                    Jouer en ligne / Voir sur le Store
+                </a>
+                <a href="#" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block">
+                    Code Source (GitHub)
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Mon Portfolio. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

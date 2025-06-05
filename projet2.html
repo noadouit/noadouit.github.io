@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet : Application Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a202c; /* bg-gray-900 */
+            color: #e2e8f0; /* text-gray-200 */
+        }
+        .container {
+            max-width: 1024px; /* mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+    <header class="bg-gray-800 py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-xl font-bold text-purple-400">Mon Portfolio</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+            <a href="index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
+            </a>
+
+            <h2 class="text-4xl font-bold mb-4 text-purple-400">Création d'un reporting</h2>
+            <p class="text-gray-400 text-lg mb-6">
+                Ce projet a été réalisé dans le cadre de la SAÉ "Création d’un reporting" du BUT SD 1. Il consistait à développer un outil personnel de gestion des notes sous Excel, destiné à suivre les résultats académiques de l’étudiant tout au long de la première année. L'objectif était de fournir une application intuitive permettant la saisie, la visualisation et l’analyse des performances selon les critères du programme.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Technologies Utilisées</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Microsoft Excel : pour la création de l’interface, des tableaux et des visualisations.</li>
+                        <li>Fonctionnalités Excel avancées : formules, tableaux croisés dynamiques, mises en forme conditionnelles.</li>
+                        <li>VBA (Visual Basic for Applications) : utilisé ponctuellement pour automatiser certaines tâches complexes (formulaires, filtrages, navigation).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Fonctionnalités Clés</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Ajout de notes à l’aide de listes déroulantes liées (semestre, compétence, ressource ou SAÉ).</li>
+                        <li>Modification facile des données saisies via une feuille dédiée.</li>
+                        <li>Tableau de bord interactif et dynamique, incluant des graphiques, pour visualiser les notes par semestre, compétence, module et SAÉ.</li>
+                        <li>Calcul automatisé de la décision de jury de fin d’année selon les règles pédagogiques</li>
+                        <li>Interface claire et personnalisée avec un titre d’application et une navigation guidée.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis et Solutions</h3>
+            <p class="mb-4">
+                L’un des principaux défis a été de gérer la complexité des règles pédagogiques, notamment pour l’automatisation de la décision de jury. Des formules conditionnelles ont été utilisées pour traduire fidèlement les critères de passage et d’évaluation des compétences. Pour améliorer l’ergonomie, un soin particulier a été apporté à la présentation des feuilles, à la structuration des données et à l’ajout d’éléments visuels (graphes, couleurs, formats dynamiques). Le recours au VBA a été limité aux besoins spécifiques, comme la création de formulaires ou la navigation guidée.
+            </p>
+            <p class="mb-4">
+                Ce projet a permis de mettre en pratique les compétences en bureautique avancée, en modélisation de données et en restitution visuelle, tout en respectant les bonnes pratiques de développement (commentaires, modularité, clarté).
+            </p>
+
+            <div class="mt-8 text-center">
+                <a href="#" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition duration-300 inline-block mr-4">
+                    Voir le projet
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
