@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Portfolio Noa DOUIT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom CSS for things that can't be done with Tailwind */
-        .dark-overlay {
-            position: relative;
-        }
+        /* Styles personnalisés */
         .dark-overlay::before {
             content: '';
             position: absolute;
@@ -21,45 +18,206 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 1;
         }
+        
         .content {
             position: relative;
             z-index: 2;
         }
+        
         .tab-content {
             display: none;
-        }
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        #profile-image {
-            transition: transform 0.3s;
-        }
-        #profile-image:hover {
-            transform: scale(1.05);
-        }
-        .project-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-        }
-        .nav-link.active {
-            color: #a78bfa; /* purple-400 */
-            border-bottom: 2px solid #a78bfa;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transition pour l'apparition du contenu des onglets */
         }
         
-        /* New styles for enhanced hero section */
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+            /* Ajouté pour l'effet de survol blanc */
+            transition: color 0.3s ease, background-color 0.3s ease; /* Transition douce pour la couleur et l'arrière-plan */
+            padding: 5px 10px; /* Ajoute un peu de padding pour l'effet d'arrière-plan */
+            border-radius: 5px; /* Bords légèrement arrondis pour l'arrière-plan */
+        }
+        
+        .nav-link:hover {
+            color: white; /* La couleur du texte devient blanche au survol */
+            background-color: rgba(255, 255, 255, 0.1); /* Arrière-plan blanc subtil */
+        }
+
+        .nav-link.active {
+            color: #a78bfa;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #a78bfa;
+            animation: underlineGrow 0.3s ease-out;
+        }
+        
+        @keyframes underlineGrow {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .section-card {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-badge {
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(167, 139, 250, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Ajouté pour l'esthétique de la section Compétences */
+        .skill-category-card {
+            background: #1f2937; /* Arrière-plan légèrement plus foncé pour les catégories de compétences */
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid #a78bfa;
+            padding-bottom: 25px; /* Ajout d'un padding pour l'espacement */
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #7c3aed;
+            border: 3px solid #a78bfa;
+        }
+
+        /* Ajouté pour l'esthétique de la section Expérience */
+        .experience-card {
+            background: rgba(31, 41, 55, 0.7); /* Utilisation d'un arrière-plan semi-transparent plus distinct */
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px); /* Flou amélioré */
+            border: 1px solid rgba(167, 139, 250, 0.2); /* Bordure subtile */
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #1f2937, #111827);
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px; /* Assure un border-radius cohérent */
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+            z-index: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Ajouté pour l'esthétique des tags de projet */
+        .project-tag {
+            background: rgba(167, 139, 250, 0.2); /* Arrière-plan légèrement plus opaque */
+            color: #d8b4fe; /* Texte violet plus clair */
+            font-weight: 500;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background: rgba(167, 139, 250, 0.3);
+            color: white;
+        }
+        
+        .contact-input {
+            background: rgba(31, 41, 55, 0.7);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            transition: all 0.3s ease;
+            border-radius: 8px; /* Ajout du border-radius */
+        }
+        
+        .contact-input:focus {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+            background: #27303e; /* Légèrement plus clair au focus */
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: #a78bfa; /* Change de couleur au survol */
+        }
+        
+        /* Styles de la section Hero (inchangés selon la demande) */
         .hero-section {
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a78bfa 100%);
             position: relative;
             overflow: hidden;
         }
+        
         .hero-section::before {
             content: '';
             position: absolute;
@@ -67,18 +225,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjxwYXRoIGQ9Ik0wIDAgTDEwMCAwIEwxMDAgMTAwIEwwIDEwMCBaIiBmaWxsPSJyZ2JhKDQzLDU3LDk0LDAuNikiLz48L3N2Zz4=');
             opacity: 0.4;
         }
+        
         .profile-pic {
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
+        
         .profile-pic:hover {
             border-color: white;
             transform: scale(1.05);
         }
+        
         .btn-primary {
             background: white;
             color: #7c3aed;
@@ -86,11 +247,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
             background: #f3f4f6;
         }
+        
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
             color: white;
@@ -99,33 +262,47 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
         }
+        
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
+        
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
+        
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
+
+        /* Styles pour l'effet de survol des titres de section */
+        .section-title-hover {
+            display: inline-block; /* Essentiel pour les propriétés de transformation */
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .section-title-hover:hover {
+            color: #d8b4fe; /* Violet plus clair au survol */
+            transform: scale(1.02); /* Légère augmentation de taille au survol */
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans min-h-screen flex flex-col">
-    <header class="bg-gray-800 py-4 shadow-lg sticky top-0 z-50">
+    <header class="bg-gray-800/90 backdrop-blur-sm py-4 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <h1 class="text-2xl font-bold text-purple-400">Mon Portfolio</h1>
+            <h1 class="text-2xl font-bold text-purple-400">Portfolio Noa DOUIT</h1>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
-                    <li><a href="#home" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300 active" data-tab="home">Accueil</a></li>
-                    <li><a href="#about" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="about">À Propos</a></li>
-                    <li><a href="#skills" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="skills">Compétences</a></li>
-                    <li><a href="#experience" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="experience">Parcours</a></li>
-                    <li><a href="#projects" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="projects">Projets</a></li>
-                    <li><a href="#summary" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="summary">Bilan</a></li>
-                    <li><a href="#contact" class="nav-link text-gray-300 hover:text-purple-400 transition duration-300" data-tab="contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link text-gray-300 transition duration-300 active" data-tab="home">Accueil</a></li>
+                    <li><a href="#about" class="nav-link text-gray-300 transition duration-300" data-tab="about">À Propos</a></li>
+                    <li><a href="#skills" class="nav-link text-gray-300 transition duration-300" data-tab="skills">Compétences</a></li>
+                    <li><a href="#experience" class="nav-link text-gray-300 transition duration-300" data-tab="experience">Parcours</a></li>
+                    <li><a href="#projects" class="nav-link text-gray-300 transition duration-300" data-tab="projects">Projets</a></li>
+                    <li><a href="#summary" class="nav-link text-gray-300 transition duration-300" data-tab="summary">Bilan</a></li>
+                    <li><a href="#contact" class="nav-link text-gray-300 transition duration-300" data-tab="contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="md:hidden">
@@ -134,20 +311,20 @@
                 </button>
             </div>
         </div>
-        <nav id="mobile-menu" class="md:hidden bg-gray-800 mt-2 hidden">
+        <nav id="mobile-menu" class="md:hidden bg-gray-800/95 backdrop-blur-sm mt-2 hidden">
             <ul class="flex flex-col space-y-2 px-4 py-2">
-                <li><a href="#home" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2 active" data-tab="home">Accueil</a></li>
-                <li><a href="#about" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="about">À Propos</a></li>
-                <li><a href="#skills" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="skills">Compétences</a></li>
-                <li><a href="#experience" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="experience">Parcours</a></li>
-                <li><a href="#projects" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="projects">Projets</a></li>
-                <li><a href="#summary" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="summary">Bilan</a></li>
-                <li><a href="#contact" class="nav-link block text-gray-300 hover:text-purple-400 transition duration-300 py-2" data-tab="contact">Contact</a></li>
+                <li><a href="#home" class="nav-link block text-gray-300 transition duration-300 py-2 active" data-tab="home">Accueil</a></li>
+                <li><a href="#about" class="nav-link block text-gray-300 transition duration-300 py-2" data-tab="about">À Propos</a></li>
+                <li><a href="#skills" class="nav-link block text-gray-300 transition duration-300 py-2" data-tab="skills">Compétences</a></li>
+                <li><a href="#experience" class="nav-link block text-gray-300 transition duration-300 py-2" data-tab="experience">Parcours</a></li>
+                <li><a href="#projects" class="nav-link block text-gray-300 transition duration-300 py-2" data-tab="projects">Projets</a></li>
+                <li><a href="#summary" class="nav-link block text-gray-300 transition duration-300 py-2" data-tab="summary">Bilan</a></li>
+                <li><a href="#contact" class="nav-link block text-gray-300 transition duration-300 py-2" data-tab="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 py-4 flex-grow">
+    <main class="container mx-auto px-4 py-8 flex-grow">
         <section id="home" class="tab-content active hero-section rounded-lg shadow-lg mb-8 overflow-hidden">
             <div class="content relative z-20 py-48 px-6 sm:px-12 lg:px-24 flex flex-col lg:flex-row items-center justify-between">
                 <div class="text-center lg:text-left lg:w-1/2 mb-12 lg:mb-0">
@@ -170,53 +347,58 @@
                 
                 <div class="relative lg:w-1/2 flex justify-center">
                     <div class="relative" style="margin-left: 200px;"> 
-                        <img id="photoProfil" src="Portfolio/Photo Noa.png" alt="Profile Picture" 
+                        <img id="photoProfil" src="Portfolio/Photo Noa.png" alt="Photo de profil" 
                             class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-lg profile-pic">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
-            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">À Propos de Moi</h2>
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Je m'appelle Noa DOUIT, j'ai 19 ans et je suis passionné de sport depuis toujours. Je pratique le tennis depuis plus de dix ans, un sport qui m’a appris la rigueur, la persévérance et l’esprit de compétition. En parallèle, je suis également un grand amateur de sport automobile, un univers qui m'inspire par sa précision technique et son exigence.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Actuellement, je suis étudiant en BUT Science des Données à l’IUT de Niort. Avant cela, j’ai obtenu mon baccalauréat au lycée Paul Guérin avec les spécialités Mathématiques et NSI (Numérique et Sciences Informatiques), et une mention assez bien. Ce choix d’études s’inscrit dans la continuité de mon parcours scientifique et de mon goût pour les chiffres et la logique.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Le BUT Science des Données propose une formation complète mêlant statistiques, informatique décisionnelle, analyse de données et modélisation. C’est un domaine en pleine expansion qui m’offre l’opportunité de développer une double compétence très recherchée : la maîtrise des outils informatiques et la capacité à interpréter et exploiter les données.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Depuis toujours, je suis attiré par les matières scientifiques. C’est donc naturellement que je me suis orienté vers cette formation, qui allie parfaitement mes centres d’intérêt et mes ambitions professionnelles. J’ai une affinité particulière avec l’analyse de données statistiques, un domaine dans lequel j’aime creuser, comprendre et dégager des tendances significatives.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Je suis quelqu’un de rigoureux, curieux et à l’écoute. J’aime travailler en équipe tout en sachant faire preuve d’autonomie lorsque c’est nécessaire. Ces qualités me permettent de m’investir pleinement dans mes projets et de toujours viser l’excellence, quel que soit le contexte.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Sur ce site, vous trouverez une page dédiée à mes projets, où je partage certaines de mes réalisations académiques et personnelles. Ces expériences m’ont permis de mettre en pratique mes compétences en traitement de données, en visualisation et en développement informatique.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                Pour la suite, je souhaite poursuivre mes études et me spécialiser dans un domaine précis, comme l’intelligence artificielle ou l’économie appliquée aux données. Ce sont deux secteurs qui me passionnent et dans lesquels je me projette pleinement à long terme.
-            </p>
-            
-            <p class="text-lg text-gray-300 leading-relaxed">
-                Ce portfolio a pour but de présenter mon profil de manière professionnelle, de valoriser mon parcours et mes compétences, et de vous donner un aperçu de ma motivation et de mon engagement dans le domaine des sciences des données.
-            </p>
+        <section id="about" class="tab-content section-card p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/50">
+                <span class="section-title-hover">À Propos de Moi</span>
+            </h2>
+            <div class="space-y-6">
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Je m'appelle Noa DOUIT, j'ai 19 ans et je suis passionné de sport depuis toujours. Je pratique le tennis depuis plus de dix ans, un sport qui m'a appris la rigueur, la persévérance et l'esprit de compétition. En parallèle, je suis également un grand amateur de sport automobile, un univers qui m'inspire par sa précision technique et son exigence.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Actuellement, je suis étudiant en BUT Science des Données à l'IUT de Niort. Avant cela, j'ai obtenu mon baccalauréat au lycée Paul Guérin avec les spécialités Mathématiques et NSI (Numérique et Sciences Informatiques), et une mention assez bien. Ce choix d'études s'inscrit dans la continuité de mon parcours scientifique et de mon goût pour les chiffres et la logique.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Le BUT Science des Données propose une formation complète mêlant statistiques, informatique décisionnelle, analyse de données et modélisation. C'est un domaine en pleine expansion qui m'offre l'opportunité de développer une double compétence très recherchée : la maîtrise des outils informatiques et la capacité à interpréter et exploiter les données.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Depuis toujours, je suis attiré par les matières scientifiques. C'est donc naturellement que je me suis orienté vers cette formation, qui allie parfaitement mes centres d'intérêt et mes ambitions professionnelles. J'ai une affinité particulière avec l'analyse de données statistiques, un domaine dans lequel j'aime creuser, comprendre et dégager des tendances significatives.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Je suis quelqu'un de rigoureux, curieux et à l'écoute. J'aime travailler en équipe tout en sachant faire preuve d'autonomie lorsque c'est nécessaire. Ces qualités me permettent de m'investir pleinement dans mes projets et de toujours viser l'excellence, quel que soit le contexte.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Sur ce site, vous trouverez une page dédiée à mes projets, où je partage certaines de mes réalisations académiques et personnelles. Ces expériences m'ont permis de mettre en pratique mes compétences en traitement de données, en visualisation et en développement informatique.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Pour la suite, je souhaite poursuivre mes études et me spécialiser dans un domaine précis, comme l'intelligence artificielle ou l'économie appliquée aux données. Ce sont deux secteurs qui me passionnent et dans lesquels je me projette pleinement à long terme.
+                </p>
+                
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Ce portfolio a pour but de présenter mon profil de manière professionnelle, de valoriser mon parcours et mes compétences, et de vous donner un aperçu de ma motivation et de mon engagement dans le domaine des sciences des données.
+                </p>
+            </div>
         </section>
 
-        <section id="skills" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
-            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Mes Compétences</h2>
+        <section id="skills" class="tab-content section-card p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/50">
+                <span class="section-title-hover">Mes Compétences</span>
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-desktop text-purple-400 mr-2"></i> Frontend</h3>
+                <div class="skill-category-card"> <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-desktop text-purple-400 mr-2"></i> Frontend</h3>
                     <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>HTML5, CSS3, JavaScript (ES6+)</li>
                         <li>Frameworks CSS: Tailwind CSS, Bootstrap</li>
@@ -224,8 +406,7 @@
                         <li>Design Responsif, UI/UX</li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-server text-purple-400 mr-2"></i> Backend</h3>
+                <div class="skill-category-card"> <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-server text-purple-400 mr-2"></i> Backend</h3>
                     <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>Node.js (Express.js)</li>
                         <li>Python (Django, Flask)</li>
@@ -233,15 +414,13 @@
                         <li>API RESTful</li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-database text-purple-400 mr-2"></i> Bases de données</h3>
+                <div class="skill-category-card"> <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-database text-purple-400 mr-2"></i> Bases de données</h3>
                     <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>SQL: MySQL, PostgreSQL, SQLite</li>
                         <li>NoSQL: MongoDB, Firebase</li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-tools text-purple-400 mr-2"></i> Outils & Autres</h3>
+                <div class="skill-category-card"> <h3 class="text-2xl font-semibold text-white mb-4"><i class="fas fa-tools text-purple-400 mr-2"></i> Outils & Autres</h3>
                     <ul class="list-disc list-inside text-gray-300 space-y-2">
                         <li>Git, GitHub/GitLab</li>
                         <li>Docker, Kubernetes (bases)</li>
@@ -252,121 +431,136 @@
             </div>
         </section>
 
-        <section id="experience" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
-            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Mon Parcours</h2>
+        <section id="experience" class="tab-content section-card p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/50">
+                <span class="section-title-hover">Mon Parcours</span>
+            </h2>
 
-            <div class="mb-8 p-6 bg-gray-700 rounded-lg shadow-md">
-                <h3 class="text-2xl font-semibold text-white mb-2">Développeur Full-Stack Senior</h3>
-                <p class="text-purple-300 mb-2">Nom de l'Entreprise A | Janvier 2022 - Présent</p>
-                <ul class="list-disc list-inside text-gray-300 space-y-2">
-                    <li>Conception et développement d'applications web complexes utilisant [Technologies spécifiques].</li>
-                    <li>Optimisation des performances et de la scalabilité des systèmes existants.</li>
-                    <li>Collaboration avec les équipes de produit et de design pour définir les exigences et livrer des fonctionnalités innovantes.</li>
-                    <li>Mentorat de développeurs juniors et revue de code.</li>
-                </ul>
-            </div>
+            <div class="space-y-8"> <div class="experience-card timeline-item"> <h3 class="text-2xl font-semibold text-white mb-2">Développeur Full-Stack Senior</h3>
+                    <p class="text-purple-300 mb-2">Nom de l'Entreprise A | Janvier 2022 - Présent</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Conception et développement d'applications web complexes utilisant [Technologies spécifiques].</li>
+                        <li>Optimisation des performances et de l'évolutivité des systèmes existants.</li>
+                        <li>Collaboration avec les équipes de produit et de design pour définir les exigences et livrer des fonctionnalités innovantes.</li>
+                        <li>Mentorat de développeurs juniors et revue de code.</li>
+                    </ul>
+                </div>
 
-            <div class="mb-8 p-6 bg-gray-700 rounded-lg shadow-md">
-                <h3 class="text-2xl font-semibold text-white mb-2">Développeur Front-End</h3>
-                <p class="text-purple-300 mb-2">Nom de l'Entreprise B | Juin 2019 - Décembre 2021</p>
-                <ul class="list-disc list-inside text-gray-300 space-y-2">
-                    <li>Développement d'interfaces utilisateur responsives et interactives avec [Technologies spécifiques].</li>
-                    <li>Amélioration de l'expérience utilisateur et de l'accessibilité des applications.</li>
-                    <li>Intégration d'APIs RESTful pour la consommation de données.</li>
-                </ul>
-            </div>
+                <div class="experience-card timeline-item"> <h3 class="text-2xl font-semibold text-white mb-2">Développeur Front-End</h3>
+                    <p class="text-purple-300 mb-2">Nom de l'Entreprise B | Juin 2019 - Décembre 2021</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Développement d'interfaces utilisateur responsives et interactives avec [Technologies spécifiques].</li>
+                        <li>Amélioration de l'expérience utilisateur et de l'accessibilité des applications.</li>
+                        <li>Intégration d'APIs RESTful pour la consommation de données.</li>
+                    </ul>
+                </div>
 
-            <div class="p-6 bg-gray-700 rounded-lg shadow-md">
-                <h3 class="text-2xl font-semibold text-white mb-2">Diplôme d'Ingénieur en Informatique</h3>
-                <p class="text-purple-300 mb-2">Nom de l'Université/École | 2016 - 2019</p>
-                <ul class="list-disc list-inside text-gray-300 space-y-2">
-                    <li>Spécialisation en développement logiciel et systèmes d'information.</li>
-                    <li>Projets de groupe et mémoires sur [Sujets pertinents].</li>
-                </ul>
+                <div class="experience-card timeline-item"> <h3 class="text-2xl font-semibold text-white mb-2">Diplôme d'Ingénieur en Informatique</h3>
+                    <p class="text-purple-300 mb-2">Nom de l'Université/École | 2016 - 2019</p>
+                    <ul class="list-disc list-inside text-gray-300 space-y-2">
+                        <li>Spécialisation en développement logiciel et systèmes d'information.</li>
+                        <li>Projets de groupe et mémoires sur [Sujets pertinents].</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section id="projects" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
-            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Mes Projets</h2>
+        <section id="projects" class="tab-content section-card p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/50">
+                <span class="section-title-hover">Mes Projets</span>
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <a href="Portfolio/projet1.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-                    <img src="Portfolio/images/apercu_projet1.png" alt="Projet 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <a href="Portfolio/projet1.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/apercu_projet1.png" alt="Projet 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
                         <h3 class="text-2xl font-semibold text-white mb-2">Site Web Portfolio</h3>
                         <p class="text-gray-400">Développement d'un portfolio personnel avec HTML, CSS et JS.</p>
                         <div class="mt-4">
-                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Programmation WEB</span>
-                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Créativité</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">Programmation WEB</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">Créativité</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="Portfolio/projet2.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-                    <img src="Portfolio/images/apercu_projet2.PNG" alt="Projet 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <a href="Portfolio/projet2.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/apercu_projet2.PNG" alt="Projet 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
                         <h3 class="text-2xl font-semibold text-white mb-2">Création d'un reporting</h3>
                         <p class="text-gray-400">Créer un tableau de bord personnel destiné à la visualisation de notes</p>
                         <div class="mt-4">
-                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">VBA</span>
-                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Design</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">VBA</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">Design</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="Portfolio/projet3.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-                    <img src="Portfolio/images/apercu_projet3.PNG" alt="Projet 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <a href="Portfolio/projet3.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/apercu_projet3.PNG" alt="Projet 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
                         <h3 class="text-2xl font-semibold text-white mb-2">Création et implémentation d'une base de données</h3>
                         <p class="text-gray-400">Concevoir une base de données relationnelle dans un contexte fictif.</p>
                         <div class="mt-4">
-                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Programmation</span>
-                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">BDR</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">Programmation</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">BDR</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="Portfolio/projet4.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-                    <img src="Portfolio/images/apercu_projet4.png" alt="Projet 4" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <a href="Portfolio/projet4.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/apercu_projet4.png" alt="Projet 4" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
                         <h3 class="text-2xl font-semibold text-white mb-2">Indicateurs de performances</h3>
-                        <p class="text-gray-400">Création d'un tableau de bords et d'indicateurs de performance pour Fleury Michon</p>
+                        <p class="text-gray-400">Création d'un tableau de bord et d'indicateurs de performance pour Fleury Michon</p>
                         <div class="mt-4">
-                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Analyse</span>
-                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Visualisation</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">Analyse</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">Visualisation</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="Portfolio/projet5.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-                    <img src="Portfolio/images/apercu_projet5.png" alt="Projet 5" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <a href="Portfolio/projet5.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/apercu_projet5.png" alt="Projet 5" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
                         <h3 class="text-2xl font-semibold text-white mb-2">Outil d'analyse</h3>
                         <p class="text-gray-400">Création d'un tableau de bord interactif pour l'analyse de données.</p>
                         <div class="mt-4">
-                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Data Viz</span>
-                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Programmation</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">Data Viz</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">Programmation</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="Portfolio/projet6.html" class="project-card block bg-gray-700 rounded-lg shadow-md hover:shadow-xl overflow-hidden transition-all duration-300 ease-in-out transform hover:-translate-y-1">
-                    <img src="Portfolio/images/aprcu_projet6.png" alt="Projet 6" class="w-full h-48 object-cover">
-                    <div class="p-6">
+                <a href="Portfolio/projet6.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/aprcu_projet6.png" alt="Projet 6" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
                         <h3 class="text-2xl font-semibold text-white mb-2">Gestion de fichier</h3>
-                        <p class="text-gray-400">Traiter les données d'un fichier json pour construire un CSV</p>
+                        <p class="text-gray-400">Traiter les données d'un fichier JSON pour construire un CSV</p>
                         <div class="mt-4">
-                            <span class="inline-block bg-purple-600 text-white text-xs px-3 py-1 rounded-full">Programmation</span>
-                            <span class="inline-block bg-gray-600 text-white text-xs px-3 py-1 rounded-full ml-2">Excel</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">Programmation</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">Excel</span>
                         </div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <section id="summary" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
-            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Bilan et Objectifs</h2>
-            <div class="text-gray-300 text-lg leading-relaxed mb-6">
-                <p class="mb-4">
+        <section id="summary" class="tab-content section-card p-8 mb-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/50">
+                <span class="section-title-hover">Bilan et Objectifs</span>
+            </h2>
+            <div class="text-gray-300 text-lg leading-relaxed mb-6 p-6 rounded-lg bg-gray-700/50 backdrop-blur-sm shadow-md"> <p class="mb-4">
                     Ce portfolio représente un instantané de mes compétences et de mon parcours jusqu'à présent. Chaque projet a été une opportunité d'apprendre, de grandir et de relever de nouveaux défis. Je suis particulièrement fier de [mentionner un aspect ou un projet spécifique] car [expliquer pourquoi].
                 </p>
                 <p class="mb-4">
@@ -377,15 +571,16 @@
                 </p>
             </div>
 
-            <h3 class="text-2xl font-semibold text-white mb-4 border-b-2 border-purple-500 pb-2">Mon Bilan Personnel (modifiable)</h3>
-            <textarea id="summary-content" class="w-full p-4 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4" rows="8" placeholder="Écrivez ici votre bilan personnel ou vos réflexions..."></textarea>
-            <button id="save-summary" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
-                Enregistrer le Bilan
+            <h3 class="text-2xl font-semibold text-white mb-4 pb-2 border-b border-purple-500/50 mt-8">Mon Bilan Personnel (modifiable)</h3>
+            <textarea id="summary-content" class="w-full p-4 bg-gray-700/70 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4 backdrop-blur-md border border-purple-500/20" rows="8" placeholder="Écrivez ici votre bilan personnel ou vos réflexions..."></textarea>
+            <button id="save-summary" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg"> Enregistrer le Bilan
             </button>
         </section>
 
-        <section id="contact" class="tab-content bg-gray-800 rounded-lg shadow-lg p-8">
-            <h2 class="text-4xl font-bold text-purple-400 mb-6 border-b-2 border-purple-500 pb-2">Contactez-moi</h2>
+        <section id="contact" class="tab-content section-card p-8">
+            <h2 class="text-4xl font-bold text-purple-400 mb-6 pb-2 border-b border-purple-500/50">
+                <span class="section-title-hover">Contactez-moi</span>
+            </h2>
             <p class="text-lg text-gray-300 mb-6">
                 N'hésitez pas à me contacter pour toute question, opportunité de collaboration ou simplement pour discuter.
             </p>
@@ -393,90 +588,123 @@
             <form action="YOUR_FORM_SUBMISSION_URL" method="POST" class="space-y-6">
                 <div>
                     <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Nom :</label>
-                    <input type="text" id="name" name="name" required class="w-full p-3 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <input type="text" id="name" name="name" required class="w-full p-3 contact-input rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none">
                 </div>
                 <div>
                     <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email :</label>
-                    <input type="email" id="email" name="email" required class="w-full p-3 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <input type="email" id="email" name="email" required class="w-full p-3 contact-input rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none">
                 </div>
                 <div>
                     <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message :</label>
-                    <textarea id="message" name="message" rows="6" required class="w-full p-3 bg-gray-700 rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    <textarea id="message" name="message" rows="6" required class="w-full p-3 contact-input rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none"></textarea>
                 </div>
-                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full md:w-auto">
-                    Envoyer le message
+                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full md:w-auto transform hover:scale-105 shadow-lg"> Envoyer le message
                 </button>
             </form>
 
-            <div class="mt-8 text-center">
-                <h3 class="text-2xl font-semibold text-white mb-4">Retrouvez-me sur :</h3>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://linkedin.com/in/votrenom" target="_blank" class="text-gray-300 hover:text-purple-400 text-4xl transition duration-300"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/votrenom" target="_blank" class="text-gray-300 hover:text-purple-400 text-4xl transition duration-300"><i class="fab fa-github"></i></a>
+            <div class="mt-12 text-center">
+                <h3 class="text-2xl font-semibold text-white mb-6">Retrouvez-moi sur :</h3>
+                <div class="flex justify-center space-x-8">
+                    <a href="https://linkedin.com/in/votrenom" target="_blank" class="social-icon text-gray-300 hover:text-purple-400 text-4xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/votrenom" target="_blank" class="social-icon text-gray-300 hover:text-purple-400 text-4xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:votre@email.com" class="social-icon text-gray-300 hover:text-purple-400 text-4xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 py-6 mt-auto">
+    <footer class="bg-gray-800/90 backdrop-blur-sm py-6 mt-auto">
         <div class="container mx-auto px-4 text-center text-gray-400">
             <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script>
-        // Tab switching logic
+        // Logique de changement d'onglet
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const tabId = this.dataset.tab;
-                showTab(tabId);
+
+                // Cache tous les contenus d'onglets
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Désactive tous les liens de navigation
+                document.querySelectorAll('.nav-link').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+
+                // Récupère l'ID de l'onglet cible à partir de l'attribut data-tab
+                const targetTabId = this.dataset.tab;
+                const targetTab = document.getElementById(targetTabId);
+
+                // Affiche le contenu de l'onglet cible et active le lien
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                    this.classList.add('active');
+                }
+
+                // Ferme le menu mobile si ouvert
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu.classList.contains('block')) {
+                    mobileMenu.classList.remove('block');
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
 
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
+        // Bascule du menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            document.querySelectorAll(`.nav-link[data-tab=\"${tabId}\"]`).forEach(link => {
-                link.classList.add('active');
-            });
-            
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
+        });
+
+        // Stockage local pour la section Bilan
+        const summaryContent = document.getElementById('summary-content');
+        const saveSummaryBtn = document.getElementById('save-summary');
+
+        // Charge le bilan enregistré au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedSummary = localStorage.getItem('noaDouitSummary');
+            if (savedSummary) {
+                summaryContent.value = savedSummary;
+            }
+        });
+
+        // Enregistre le bilan au clic du bouton
+        saveSummaryBtn.addEventListener('click', () => {
+            localStorage.setItem('noaDouitSummary', summaryContent.value);
+            alert('Votre bilan a été enregistré !');
+        });
+
+        // Ajoute l'animation de flottement à la photo de profil lorsque l'onglet Accueil est actif
+        const photoProfil = document.getElementById('photoProfil');
+        const homeNavLink = document.querySelector('.nav-link[data-tab="home"]');
+
+        function toggleFloatAnimation() {
+            if (homeNavLink.classList.contains('active')) {
+                photoProfil.classList.add('animate-float');
+            } else {
+                photoProfil.classList.remove('animate-float');
             }
         }
-        
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        
-        // Save summary functionality
-        document.getElementById('save-summary').addEventListener('click', function() {
-            const summaryContent = document.getElementById('summary-content').value;
-            // In a real app, you would save this to a database or localStorage
-            localStorage.setItem('personalSummary', summaryContent);
-            alert('Bilan enregistré avec succès !');
-        });
-        
-        // Load saved summary if exists
-        window.addEventListener('DOMContentLoaded', function() {
-            const savedSummary = localStorage.getItem('personalSummary');
-            if (savedSummary) {
-                document.getElementById('summary-content').value = savedSummary;
-            }
-            // Ensure the initial tab is shown correctly on load
-            const initialHash = window.location.hash.substring(1) || 'home';
-            showTab(initialHash);
+
+        // Vérification initiale au chargement de la page
+        toggleFloatAnimation();
+
+        // Vérifie à chaque clic sur un onglet
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', toggleFloatAnimation);
         });
     </script>
 </body>
