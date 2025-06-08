@@ -704,10 +704,7 @@
             N'hésitez pas à me contacter pour toute question, opportunité de collaboration ou simplement pour discuter.
           </p>
         
-          <form id="contact-form" action="https://formsubmit.co/noadouit11@gmail.com" method="POST" class="space-y-6" target="_blank">
-            <!-- Anti-spam honeypot -->
-            <input type="text" name="_honey" style="display:none" autocomplete="off">
-        
+          <form action="https://formsubmit.co/noadouit11@gmail.com" method="POST" class="space-y-6" target="_blank">
             <div>
               <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Nom :</label>
               <input type="text" id="name" name="name" required class="w-full p-3 contact-input rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none" />
@@ -721,8 +718,8 @@
               <textarea id="message" name="message" rows="6" required class="w-full p-3 contact-input rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none"></textarea>
             </div>
         
-            <!-- Champ caché pour redirection après envoi -->
-            <input type="hidden" name="_next" value="https://noadouit.github.io/Portfolio/merci.html" />
+            <!-- Redirection après envoi -->
+            <input type="hidden" name="_next" value="https://noadouit.github.io/merci.html" />
         
             <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full md:w-auto transform hover:scale-105 shadow-lg">
               Envoyer le message
