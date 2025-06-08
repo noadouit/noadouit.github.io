@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message envoyé - Portfolio Noa DOUIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Styles personnalisés identiques à l'index */
+        .dark-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-card {
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #7c3aed;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+            background: #f3f4f6;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a78bfa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjxwYXRoIGQ9Ik0wIDAgTDEwMCAwIEwxMDAgMTAwIEwwIDEwMCBaIiBmaWxsPSJyZ2JhKDQzLDU3LDk0LDAuNikiLz48L3N2Zz4=');
+            opacity: 0.4;
+        }
+        
+        .animate-check {
+            animation: checkScale 0.6s ease-in-out;
+        }
+        
+        @keyframes checkScale {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans min-h-screen flex flex-col">
+    <header class="bg-gray-800/90 backdrop-blur-sm py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold text-purple-400">Portfolio Noa DOUIT</h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-300 hover:text-white transition duration-300">Accueil</a></li>
+                </ul>
+            </nav>
+            <div class="md:hidden">
+                <a href="index.html" class="text-gray-300 hover:text-white transition duration-300">
+                    <i class="fas fa-home text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 flex-grow flex items-center justify-center">
+        <section class="section-card p-8 max-w-2xl w-full text-center">
+            <div class="mb-8">
+                <i class="fas fa-check-circle text-6xl text-green-400 mb-6 animate-check"></i>
+                <h2 class="text-4xl font-bold text-purple-400 mb-4">Message envoyé avec succès !</h2>
+                <p class="text-xl text-gray-300">
+                    Merci pour votre message. Je vous répondrai dans les plus brefs délais.
+                </p>
+            </div>
+            
+            <a href="index.html" class="btn-primary py-3 px-8 rounded-full inline-block">
+                <i class="fas fa-arrow-left mr-2"></i> Retour à l'accueil
+            </a>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800/90 backdrop-blur-sm py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
