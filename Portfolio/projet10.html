@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du Projet : Jeu Vidéo 2D</title>
+    <title>Détails du Projet : Prédiction de Variable Quantitative (ML)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -29,50 +29,56 @@
 
     <main class="container mx-auto px-4 py-8">
         <div class="bg-gray-800 rounded-lg shadow-lg p-8">
-            <a href="../#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
+            <a href="../index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
                 <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
             </a>
 
-            <h2 class="text-4xl font-bold mb-4 text-purple-400">Gestion De Fichier</h2>
+            <h2 class="text-4xl font-bold mb-4 text-purple-400">Prédiction d'une variable quantitative (Machine Learning)</h2>
             <p class="text-gray-400 text-lg mb-6">
-                Ce projet a été réalisé dans le cadre de la SAÉ Gestion de fichiers en PYTHON. L’objectif principal était de comprendre et maîtriser la gestion des fichiers en Python, en développant un programme capable de lire des données depuis un fichier texte, de les trier correctement, puis d’écrire le résultat dans un fichier de sortie. Ce travail vise à assurer la persistance des données au-delà de l’exécution du programme, contrairement aux données stockées uniquement en mémoire vive.
+                L'objectif de ce projet était de prédire le diamètre d'une tumeur (variable cible Y) en fonction de 10 tests médicaux (X1 à X10) sur une cohorte de 20 000 patients. Le travail a nécessité une préparation rigoureuse des données (audit, imputation, mise à l'échelle) afin d'entraîner et d'évaluer de manière robuste un algorithme de Régression Linéaire Multiple.
             </p>
+
+            <div class="mb-8">
+                <a href="SAE Prédiction Noa DOUIT Nolan FONTAINE - OneDrive.html" target="_blank" class="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300 shadow-md">
+                    <i class="fas fa-file-code mr-3 text-xl"></i> Consulter l'analyse complète
+                </a>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                     <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Données et Outils Utilisés</h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li>Fichiers textes (données d’entrée et fichiers de sortie)</li>
-                        <li>Environnement de programmation Python</li>
-                        <li>Méthodes de lecture et écriture de fichiers en mode texte</li>
-                        <li>Algorithmes de tri appliqués aux données extraites des fichiers</li>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><strong>Langage :</strong> Python (bibliothèques Pandas, Scikit-Learn, Scipy).</li>
+                        <li><strong>Traitement des valeurs manquantes :</strong> Imputation ciblée par la médiane (SimpleImputer) pour résister aux valeurs aberrantes.</li>
+                        <li><strong>Standardisation :</strong> Utilisation de StandardScaler et RobustScaler pour pallier la forte hétérogénéité des échelles entre les différents tests médicaux.</li>
+                        <li><strong>Méthode d'évaluation :</strong> Validation Croisée (K-Fold, k=5) et calcul du coefficient de détermination.</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Contenu de l’Étude Réalisée</h3>
-                    <ul class="list-disc list-inside space-y-2">
-                        <li>Distinction entre fichiers binaires et fichiers textes</li>
-                        <li>Gestion des fichiers textes, qui sont lisibles par un humain et facilement manipulables dans Python</li>
-                        <li>Importance d’ouvrir un fichier avant de l’utiliser et de le fermer après usage pour libérer la ressource</li>
-                        <li>Écriture des données triées dans un fichier de sortie</li>
-                        <li>Écriture des données triées dans un fichier de sortie</li>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Suppression préventive de la variable identifiant pour éviter que le modèle n'apprenne des relations fausses.</li>
+                        <li>Comparaison des critères de détection des anomalies : la méthode du Z-score a été écartée au profit de la méthode interquartile en raison de l'asymétrie positive forte des données et de l'effet de masquage.</li>
+                        <li>Modélisation 1 : Suppression pure et simple des valeurs extrêmes.</li>
+                        <li>Modélisation 2 : Atténuation des extrêmes par écrêtement (Winsorisation à 5%).</li>
+                        <li>Modélisation 3 : Conservation des données brutes avec un modèle ajusté.</li>
                     </ul>
                 </div>
             </div>
 
-            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis et Solutions</h3>
-            <p class="mb-4">
-                Un défi majeur a été l'optimisation des performances pour garantir une expérience fluide sur une large gamme d'appareils mobiles. J'ai utilisé des techniques d'optimisation des assets et du code pour réduire la consommation de ressources. La conception d'un gameplay équilibré et engageant, offrant un bon niveau de difficulté progressive, a également été un point central.
+            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Défis et Solutions : Le Choix du Modèle</h3>
+            <p class="mb-4 text-gray-300 leading-relaxed">
+                Le principal défi statistique fut l'omniprésence de valeurs extrêmes dans les tests médicaux. Ces valeurs atypiques agissent comme des points leviers qui biaisent fortement la Régression Linéaire Multiple. L'évaluation des trois scénarios a montré que la conservation des données brutes entraînait une forte instabilité mathématique en raison de la pénalisation excessive des écarts par la méthode des moindres carrés.
             </p>
-            <p class="mb-4">
-                La création de tous les assets graphiques et sonores en respectant une cohérence artistique a demandé une attention particulière aux détails.
+            <p class="mb-4 text-gray-300 leading-relaxed">
+                La solution définitive retenue a été le Modèle 2 (Atténuation par Winsorisation à 5%). En plafonnant les pourcentages d'excès bilatéraux, nous avons neutralisé la menace des points leviers sans avoir à supprimer aucun patient de la cohorte, préservant ainsi toute l'exhaustivité de l'information. Ce modèle offre une stabilité exceptionnelle en validation croisée, garantissant des prédictions fiables et généralisables pour une future mise en production.
             </p>
         </div>
     </main>
 
     <footer class="bg-gray-800 py-6 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Portfolio Noa DOUIT. Tous droits réservés.</p>
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; 2026 Portfolio Noa DOUIT. Tous droits réservés.</p>
         </div>
     </footer>
 </body>
