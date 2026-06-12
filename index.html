@@ -852,7 +852,7 @@
         </div>
     </footer>
 
-    <script>
+<script>
         // Logique de changement d'onglet
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -903,26 +903,30 @@
         // Charge le bilan enregistré au chargement de la page
         document.addEventListener('DOMContentLoaded', () => {
             const savedSummary = localStorage.getItem('noaDouitSummary');
-            if (savedSummary) {
+            if (savedSummary && summaryContent) {
                 summaryContent.value = savedSummary;
             }
         });
 
         // Enregistre le bilan au clic du bouton
-        saveSummaryBtn.addEventListener('click', () => {
-            localStorage.setItem('noaDouitSummary', summaryContent.value);
-            alert('Votre bilan a été enregistré !');
-        });
+        if (saveSummaryBtn) {
+            saveSummaryBtn.addEventListener('click', () => {
+                localStorage.setItem('noaDouitSummary', summaryContent.value);
+                alert('Votre bilan a été enregistré !');
+            });
+        }
 
         // Ajoute l'animation de flottement à la photo de profil lorsque l'onglet Accueil est actif
         const photoProfil = document.getElementById('photoProfil');
         const homeNavLink = document.querySelector('.nav-link[data-tab="home"]');
 
         function toggleFloatAnimation() {
-            if (homeNavLink.classList.contains('active')) {
-                photoProfil.classList.add('animate-float');
-            } else {
-                photoProfil.classList.remove('animate-float');
+            if (homeNavLink && photoProfil) {
+                if (homeNavLink.classList.contains('active')) {
+                    photoProfil.classList.add('animate-float');
+                } else {
+                    photoProfil.classList.remove('animate-float');
+                }
             }
         }
 
@@ -932,6 +936,25 @@
         // Vérifie à chaque clic sur un onglet
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', toggleFloatAnimation);
+        });
+
+        // --- NOUVEAU CODE : GESTION DU RETOUR SUR LE BON ONGLET ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // On regarde s'il y a un # dans l'adresse web (ex: index.html#projects)
+            const hash = window.location.hash; 
+            
+            if (hash) {
+                // On enlève le # pour récupérer juste le nom de l'onglet (ex: "projects")
+                const targetId = hash.substring(1); 
+                
+                // On cherche le lien du menu qui correspond à cet onglet
+                const targetLink = document.querySelector(`.nav-link[data-tab="${targetId}"]`);
+                
+                // Si on le trouve, on simule un clic dessus automatiquement !
+                if (targetLink) {
+                    targetLink.click();
+                }
+            }
         });
     </script>
 </body>
