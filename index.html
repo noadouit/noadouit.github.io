@@ -400,7 +400,6 @@
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Programmation -->
                 <div class="skill-category-card">
                     <h3 class="text-2xl font-semibold text-white mb-4">
                         <i class="fas fa-code text-purple-400 mr-2"></i> Programmation
@@ -414,7 +413,6 @@
                     </ul>
                 </div>
         
-                <!-- Base de données & ETL-->
                 <div class="skill-category-card">
                     <h3 class="text-2xl font-semibold text-white mb-4">
                         <i class="fas fa-database text-purple-400 mr-2"></i> Ingénierie des données
@@ -427,7 +425,6 @@
                     </ul>
                 </div>
         
-                <!-- Datavisualisation -->
                 <div class="skill-category-card">
                     <h3 class="text-2xl font-semibold text-white mb-4">
                         <i class="fas fa-chart-bar text-purple-400 mr-2"></i> Datavisualisation & BI
@@ -440,7 +437,6 @@
                     </ul>
                 </div>
         
-                <!-- Statistiques & Machine Learning -->
                 <div class="skill-category-card">
                     <h3 class="text-2xl font-semibold text-white mb-4">
                         <i class="fas fa-brain text-purple-400 mr-2"></i> Statistiques & ML
@@ -454,7 +450,6 @@
                     </ul>
                 </div>
         
-                <!-- Analyse Financière -->
                 <div class="skill-category-card">
                     <h3 class="text-2xl font-semibold text-white mb-4">
                         <i class="fas fa-chart-line text-purple-400 mr-2"></i> Analyse Financière
@@ -467,7 +462,6 @@
                     </ul>
                 </div>
         
-                <!-- Compétences humaines -->
                 <div class="skill-category-card">
                     <h3 class="text-2xl font-semibold text-white mb-4">
                         <i class="fas fa-users text-purple-400 mr-2"></i> Soft Skills
@@ -490,7 +484,6 @@
                 <span class="section-title-hover">Mon Parcours</span>
             </h2>
 
-            <!-- 💼 Parcours professionnel -->
             <div class="space-y-8">
                 <h3 class="text-3xl font-semibold text-white border-b border-purple-500/30 pb-2 mb-4">
                     <i class="fas fa-briefcase text-purple-400 mr-2"></i> Parcours professionnel
@@ -534,7 +527,6 @@
                 </div>
             </div>
         
-            <!-- 🏫 Parcours scolaire -->
             <div class="space-y-8 mb-12">
                 <h3 class="text-3xl font-semibold text-white border-b border-purple-500/30 pb-2 mb-4">
                     <i class="fas fa-graduation-cap text-purple-400 mr-2"></i> Parcours scolaire
@@ -824,7 +816,6 @@
               <textarea id="message" name="message" rows="6" required class="w-full p-3 contact-input rounded-lg text-gray-200 placeholder-gray-400 focus:outline-none"></textarea>
             </div>
         
-            <!-- Redirection après envoi -->
             <input type="hidden" name="_next" value="https://noadouit.github.io/merci.html" />
         
             <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 w-full md:w-auto transform hover:scale-105 shadow-lg">
@@ -852,11 +843,15 @@
         </div>
     </footer>
 
-<script>
-        // Logique de changement d'onglet
+    <script>
+        // Logique de changement d'onglet optimisée
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+
+                // On modifie l'URL pour ajouter le hashtag correspondant (ex: #projects)
+                // Cela permet aux boutons Précédent/Suivant de fonctionner et à notre script de s'y retrouver
+                history.pushState(null, null, this.getAttribute('href'));
 
                 // Cache tous les contenus d'onglets
                 document.querySelectorAll('.tab-content').forEach(content => {
@@ -880,7 +875,7 @@
 
                 // Ferme le menu mobile si ouvert
                 const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu.classList.contains('block')) {
+                if (mobileMenu && mobileMenu.classList.contains('block')) {
                     mobileMenu.classList.remove('block');
                     mobileMenu.classList.add('hidden');
                 }
@@ -891,10 +886,12 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('block');
-        });
+        if(mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('block');
+            });
+        }
 
         // Stockage local pour la section Bilan
         const summaryContent = document.getElementById('summary-content');
@@ -938,24 +935,40 @@
             link.addEventListener('click', toggleFloatAnimation);
         });
 
-        // --- NOUVEAU CODE : GESTION DU RETOUR SUR LE BON ONGLET ---
-        window.addEventListener('DOMContentLoaded', () => {
-            // On regarde s'il y a un # dans l'adresse web (ex: index.html#projects)
+        // --- GESTION DU RETOUR SUR LE BON ONGLET (DEPUIS URL) ---
+        function activateTabFromHash() {
             const hash = window.location.hash; 
             
             if (hash) {
-                // On enlève le # pour récupérer juste le nom de l'onglet (ex: "projects")
                 const targetId = hash.substring(1); 
-                
-                // On cherche le lien du menu qui correspond à cet onglet
                 const targetLink = document.querySelector(`.nav-link[data-tab="${targetId}"]`);
                 
-                // Si on le trouve, on simule un clic dessus automatiquement !
                 if (targetLink) {
-                    targetLink.click();
+                    // Cache tous les contenus d'onglets
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    // Désactive tous les liens de navigation
+                    document.querySelectorAll('.nav-link').forEach(nav => {
+                        nav.classList.remove('active');
+                    });
+                    
+                    // Active le bon onglet
+                    const targetTab = document.getElementById(targetId);
+                    if(targetTab) {
+                        targetTab.classList.add('active');
+                        targetLink.classList.add('active');
+                    }
+                    toggleFloatAnimation();
                 }
             }
-        });
+        }
+
+        // On écoute le chargement initial de la page
+        window.addEventListener('DOMContentLoaded', activateTabFromHash);
+        
+        // On écoute aussi les clics sur les boutons Précédent/Suivant du navigateur
+        window.addEventListener('popstate', activateTabFromHash);
     </script>
 </body>
 </html>
