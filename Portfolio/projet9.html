@@ -35,10 +35,12 @@
 
             <h2 class="text-4xl font-bold mb-4 text-purple-400">Reporting d'une Analyse Multivariée Territoriale</h2>
             <p class="text-gray-400 text-lg mb-6">
-                Ce projet consistait à développer de A à Z une application web interactive avec <strong>RShiny</strong> pour analyser la répartition de la pauvreté et des infrastructures en France[cite: 175, 176]. En utilisant des algorithmes d'apprentissage non supervisé (Clustering), nous avons segmenté le territoire national en profils socio-économiques distincts[cite: 308].
+                Ce projet consistait à développer de A à Z une application web interactive avec <strong>RShiny</strong> pour analyser la répartition de la pauvreté et des infrastructures en France. En utilisant des algorithmes d'apprentissage non supervisé (Clustering), nous avons segmenté le territoire national en profils socio-économiques distincts.
             </p>
 
+            <!-- BOUTON POUR TÉLÉCHARGER/VOIR LE PDF -->
             <div class="mb-8">
+                <!-- Assure-toi que le PDF s'appelle bien comme ça dans ton dossier -->
                 <a href="SAE_FONTAINE_Nolan_CHAUVIN_Rose_DOUIT_Noa.pdf" target="_blank" class="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300 shadow-md">
                     <i class="fas fa-file-pdf mr-3 text-xl"></i> Consulter le reporting complet
                 </a>
@@ -48,31 +50,31 @@
                 <div>
                     <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Données et Méthodes</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li><strong>Sources :</strong> Données ouvertes de l'INSEE sur la pauvreté [cite: 394], l'éducation [cite: 397], et le logement[cite: 398].</li>
-                        <li><strong>Outils :</strong> Développement du tableau de bord web interactif sous <strong>RShiny</strong> avec filtres dynamiques et cartographie[cite: 272].</li>
-                        <li><strong>Machine Learning :</strong> Algorithme K-Means pour la segmentation[cite: 289], implémenté sous R.</li>
-                        <li><strong>Mathématiques :</strong> Utilisation de la méthode du coude pour justifier mathématiquement le nombre optimal de clusters (K=3)[cite: 290, 291].</li>
+                        <li><strong>Sources :</strong> Données ouvertes de l'INSEE sur la pauvreté, l'éducation, et le logement.</li>
+                        <li><strong>Outils :</strong> Développement du tableau de bord web interactif sous <strong>RShiny</strong> avec filtres dynamiques et cartographie.</li>
+                        <li><strong>Machine Learning :</strong> Algorithme K-Means pour la segmentation, implémenté sous R.</li>
+                        <li><strong>Mathématiques :</strong> Utilisation de la méthode du coude pour justifier mathématiquement le nombre optimal de clusters (K=3).</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Contenu de l’Étude</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li>Identification des extrêmes : Analyse des 5 départements les plus pauvres (ex: Seine-Saint-Denis) et les moins pauvres (ex: Vendée)[cite: 183, 184].</li>
-                        <li>Croisement du taux de pauvreté avec des variables structurelles comme l'éducation et la proportion de familles monoparentales[cite: 219].</li>
-                        <li>Cartographie interactive et nuages de points 2D pour valider la séparation statistique des clusters[cite: 257, 299].</li>
-                        <li>Calcul et interprétation des moyennes de chaque indicateur par profil pour créer une véritable "carte d'identité" par cluster[cite: 363, 364].</li>
+                        <li>Identification des extrêmes : Analyse des 5 départements les plus pauvres (ex: Seine-Saint-Denis) et les moins pauvres (ex: Vendée).</li>
+                        <li>Croisement du taux de pauvreté avec des variables structurelles comme l'éducation et la proportion de familles monoparentales.</li>
+                        <li>Cartographie interactive et nuages de points 2D pour valider la séparation statistique des clusters.</li>
+                        <li>Calcul et interprétation des moyennes de chaque indicateur par profil pour créer une véritable "carte d'identité" par cluster.</li>
                     </ul>
                 </div>
             </div>
 
             <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Interprétation et Résultats</h3>
             <p class="mb-4 text-gray-300 leading-relaxed">
-                Le clustering K-Means nous a permis de diviser la France en 3 profils territoriaux très distincts directement visualisables depuis l'interface Shiny[cite: 308]:
+                Le clustering K-Means nous a permis de diviser la France en 3 profils territoriaux très distincts directement visualisables depuis l'interface Shiny :
             </p>
             <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6 ml-4">
-                <li><strong>Le Groupe Jaune (14 départements) : Les Grandes Métropoles Inégalitaires.</strong> [cite: 372] Ce groupe concentre la richesse et les diplômes, mais est paradoxalement frappé par une très forte pauvreté urbaine (notamment chez les moins de 30 ans) et de profondes inégalités[cite: 374, 375].</li>
-                <li><strong>Le Groupe Rouge (43 départements) : La Diagonale du Vide.</strong> [cite: 377] La France rurale et isolée (des Ardennes aux Pyrénées), marquée par un manque d'infrastructures médicales et éducatives, et une prédominance écrasante de l'habitat individuel (71,3% de maisons)[cite: 378, 380, 381, 384].</li>
-                <li><strong>Le Groupe Bleu (39 départements) : Les Villes Moyennes.</strong> [cite: 385] Constituant la "classe moyenne" des territoires, ils affichent le taux de pauvreté le plus bas (12,48%) et une économie saine, sans les inégalités extrêmes des métropoles[cite: 387, 388, 389].</li>
+                <li><strong>Le Groupe Jaune (14 départements) : Les Grandes Métropoles Inégalitaires.</strong> Ce groupe concentre la richesse et les diplômes, mais est paradoxalement frappé par une très forte pauvreté urbaine (notamment chez les moins de 30 ans) et de profondes inégalités.</li>
+                <li><strong>Le Groupe Rouge (43 départements) : La Diagonale du Vide.</strong> La France rurale et isolée (des Ardennes aux Pyrénées), marquée par un manque d'infrastructures médicales et éducatives, et une prédominance écrasante de l'habitat individuel (71,3% de maisons).</li>
+                <li><strong>Le Groupe Bleu (39 départements) : Les Villes Moyennes.</strong> Constituant la "classe moyenne" des territoires, ils affichent le taux de pauvreté le plus bas (12,48%) et une économie saine, sans les inégalités extrêmes des métropoles.</li>
             </ul>
         </div>
     </main>
