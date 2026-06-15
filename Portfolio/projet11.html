@@ -1,80 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du Projet : Système d'Information Géographique</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #1a202c;
-            color: #e2e8f0;
-        }
-        .container {
-            max-width: 1024px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-gray-200 min-h-screen">
-    <header class="bg-gray-800 py-4 shadow-lg">
-        <div class="container mx-auto px-4">
-            <h1 class="text-xl font-bold text-purple-400">Mon Portfolio</h1>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 py-8">
-        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
-            <a href="../index.html#projects" class="text-purple-400 hover:text-purple-300 flex items-center mb-6">
-                <i class="fas fa-arrow-left mr-2"></i> Retour aux projets
-            </a>
-
-            <h2 class="text-4xl font-bold mb-4 text-purple-400">Étude Approfondie : Système d'Information Géographique</h2>
-            <p class="text-gray-400 text-lg mb-6">
-                Ce projet a porté sur l'analyse stratégique du maillage territorial de McDonald's en France. En exploitant les capacités de <strong>QGIS</strong>, nous avons croisé des données géographiques avec des variables démographiques pour comprendre la stratégie d'implantation de l'enseigne basée sur les flux et l'accessibilité[cite: 6].
-            </p>
-
-            <div class="mb-8">
-                <a href="PROJET_ÉTUDE_APPROFONDIE_SIG.pdf" target="_blank" class="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300 shadow-md">
-                    <i class="fas fa-file-pdf mr-3 text-xl"></i> Consulter l'étude SIG complète
+<a href="Portfolio/projet11.html" class="project-card block rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="Portfolio/images/apercu_projet11.png" alt="Analyse SIG" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Analyse Spatiale (SIG)</h3>
+                        <p class="text-gray-400">Étude du maillage territorial et analyse de zones de chalandise via QGIS.</p>
+                        <div class="mt-4">
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full">QGIS</span>
+                            <span class="inline-block project-tag text-xs px-3 py-1 rounded-full ml-2">Analyse Spatiale</span>
+                        </div>
+                    </div>
                 </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Données et Méthodes</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li><strong>Outil :</strong> QGIS (systèmes de coordonnées Lambert 93, jointures spatiales, extension GroupStats)[cite: 6].</li>
-                        <li><strong>Traitement :</strong> Nettoyage des données CSV et conversion en format GeoPackage[cite: 6].</li>
-                        <li><strong>Analyse Spatiale :</strong> Calculs de proximité (zones tampons de 500m et 15km) et jointures spatiales pour agréger la population par zone d'influence[cite: 6].</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Contenu de l’Étude</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li>Visualisation des zones de concentration des restaurants et analyse des déserts commerciaux[cite: 6].</li>
-                        <li>Calcul d'indicateurs de densité par département (nombre de restaurants pour 100 000 habitants)[cite: 6].</li>
-                        <li>Analyse des ouvertures par année et région pour modéliser les phases de conquête et de saturation du marché[cite: 6].</li>
-                        <li>Identification de la clientèle de transit via l'analyse de proximité des nœuds de transport (Gares SNCF, Métros)[cite: 6].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 class="text-2xl font-semibold mb-4 border-b-2 border-purple-500 pb-2">Interprétation et Recommandations</h3>
-            <p class="mb-4 text-gray-300 leading-relaxed">
-                L'étude a mis en lumière deux piliers stratégiques : la recherche des flux de passage (gares, nœuds de transport) et le ciblage des bassins de population denses[cite: 6]. Notre analyse a permis de recommander une stratégie d'implantation axée sur les villes moyennes, où le maillage territorial reste à optimiser, contrairement aux métropoles déjà saturées[cite: 6].
-            </p>
-        </div>
-    </main>
-
-    <footer class="bg-gray-800 py-6 mt-12">
-        <div class="container mx-auto px-4 text-center text-gray-400">
-            <p>&copy; 2026 Portfolio Noa DOUIT. Tous droits réservés.</p>
-        </div>
-    </footer>
-</body>
-</html>
